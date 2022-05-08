@@ -77,7 +77,9 @@
   /* is supported by the compiler, which prevents internal symbols from */
   /* being exported by the library.                                     */
 #if defined( __GNUC__ ) ||  defined( __clang__ )
+#if !defined(_WIN32) && !defined(__OS2__)
 #define HAVE_HIDDEN  1
+#endif
 #define ZEXPORT
 #define ZEXTERN      static
 #endif
