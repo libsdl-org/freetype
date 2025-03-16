@@ -2944,7 +2944,7 @@
 
 
     error = FT_ERR( Invalid_Face_Handle );
-    if ( face && face->driver )
+    if ( face && face->driver && face->internal)
     {
       face->internal->refcount--;
       if ( face->internal->refcount > 0 )
