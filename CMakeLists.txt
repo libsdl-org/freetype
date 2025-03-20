@@ -481,7 +481,10 @@ set_target_properties(
 
 target_compile_definitions(
   freetype PRIVATE FT2_BUILD_LIBRARY)
-
+if(NOT BUILD_SHARED_LIBS)
+  # Don't export symbols
+  target_compile_definitions(freetype PRIVATE FT_PUBLIC_FUNCTION_ATTRIBUTE=)
+endif()
 if (WIN32)
   target_compile_definitions(
     freetype PRIVATE _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_WARNINGS)
